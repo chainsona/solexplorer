@@ -57,8 +57,8 @@ export function SolanaMetricsTPS(props: { className?: string }) {
 
   return (
     <BentoGridItem
-      title={"Solana TPS"}
-      description={<span className="text-sm">Transactions per second</span>}
+      title={"True TPS"}
+      description={<span className="text-sm">Non-voting transactions</span>}
       header={<SkeletonBarChart {...{ tps, tpsHistory }} />}
       className={cn("[&>p:text-lg] md:col-span-1", props.className)}
     />
