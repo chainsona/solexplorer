@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
+import * as React from "react";
 
-import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,21 +14,30 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-const features: { title: string; href: string; description: string }[] = [
+import { cn } from "@/lib/utils";
+
+const features: {
+  title: string;
+  href: string;
+  description: string;
+  disabled?: boolean;
+}[] = [
   {
-    title: "Explorer",
+    title: "Dashboard",
     href: "/",
     description: "Overview of the Solana blockchain.",
   },
   {
-    title: "Portfolio",
-    href: "/portfolio",
-    description: "View your portfolio holdings.",
+    title: "Explorer",
+    href: "/explorer",
+    description: "Track your Solana tokens and NFTs.",
+    disabled: true,
   },
   {
     title: "Validators",
-    href: "/accounts",
-    description: "View account details and balances.",
+    href: "/validators",
+    description: "List of validators on the Solana network.",
+    disabled: true,
   },
 ];
 
@@ -60,6 +69,7 @@ export function HeaderNavigation() {
                   key={feature.title}
                   title={feature.title}
                   href={feature.href}
+                  about={feature.disabled ? "soon" : ""}
                 >
                   {feature.description}
                 </ListItem>
@@ -99,7 +109,10 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
+          <div className="flex items-center gap-2 text-sm font-medium leading-none">
+            <div className="">{title}</div>
+            {props.about === "soon" && <Badge variant="default">Soon</Badge>}
+          </div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>

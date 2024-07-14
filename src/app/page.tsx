@@ -1,13 +1,9 @@
-import { HeaderNavigation } from "@/components/header";
-import { ModeToggle } from "@/components/ui/mode-toggle";
+import { SolanaMetricsGrid } from "@/components/solana/metrics-grid";
 
-export default function Home() {
+export default function Dashboard() {
   return (
-    <main className="min-h-screen h-screen flex flex-col items-center p-4">
-      <div className="flex gap-3">
-        <HeaderNavigation />
-        <ModeToggle />
-      </div>
+    <main className="grow w-full pb-4">
+      <SolanaMetricsGrid />
     </main>
   );
 }
