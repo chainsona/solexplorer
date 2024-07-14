@@ -46,8 +46,6 @@ export function SolanaMetricsLastBlocks(props: { className?: string }) {
       slotsInEpoch: epoch.slotsInEpoch,
     });
 
-    console.log("block", block);
-
     if (!block || !block.blockTime) return;
 
     if (lastBlocks.find((b) => b.hash === block.blockhash)) return;
